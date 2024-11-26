@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Rows</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Table Row Addition</h1>
+
+    <!-- Form to input new row data -->
+    <form id="rowForm">
+        <label for="cell1">Cell 1: </label>
+        <input type="text" id="cell1" name="cell1" required>
+        <label for="cell2">Cell 2: </label>
+        <input type="text" id="cell2" name="cell2" required>
+        <label for="cell3">Cell 3: </label>
+        <input type="text" id="cell3" name="cell3" required>
+        <button type="button" onclick="addRow()">Add Row</button>
+        <div id="error" class="error"></div>
+    </form>
+
+    <!-- Table to display rows -->
+    <table id="dynamicTable">
+        <thead>
+            <tr>
+                <th>Cell 1</th>
+                <th>Cell 2</th>
+                <th>Cell 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be added here dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        function addRow() {
+            const cell1 = document.getElementById('cell1').value.trim();
+            const cell2 = document.getElementById('cell2').value.trim();
+            const cell3 = document.getElementById('cell3').value.trim();
+            const errorDiv = document.getElementById('error');
+
+            // Input validation
+            if (!cell1 || !cell2 || !cell3) {
+                errorDiv.textContent = 'All fields are required.';
+                return;
+            }
+
+            // Clear previous error message
+            errorDiv.textContent = '';
+
+            // Get the table body
+            const tableBody = document.getElementById('dynamicTable').querySelector('tbody');
+
+            // Create a new row
+            const newRow = document.createElement('tr');
+
+            // Create cells and add data
+            const cell1Element = document.createElement('td');
+            cell1Element.textContent = cell1;
+            const cell2Element = document.createElement('td');
+            cell2Element.textContent = cell2;
+            const cell3Element = document.createElement('td');
+            cell3Element.textContent = cell3;
+
+            // Append cells to the row
+            newRow.appendChild(cell1Element);
+            newRow.appendChild(cell2Element);
+            newRow.appendChild(cell3Element);
+
+            // Append row to the table body
+            tableBody.appendChild(newRow);
+
+            // Clear the form fields
+            document.getElementById('rowForm').reset();
+        }
+    </script>
+</body>
+</html>

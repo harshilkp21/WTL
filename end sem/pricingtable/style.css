@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f9;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pricing-table {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+}
+
+.pricing-plan {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+.pricing-plan h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.pricing-plan .price {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    color: #444;
+}
+
+.pricing-plan ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.pricing-plan ul li {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.pricing-plan button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    background: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pricing-plan button:hover {
+    background: #0056b3;
+}
+
+.pricing-plan:hover {
+    transform: scale(1.05);
+    background: #f9f9ff;
+    border-color: #007BFF;
+}
+
+.popular {
+    border-color: #007BFF;
+    background: #f0f8ff;
+}
+
+.popular:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .pricing-table {
+        flex-direction: column;
+        align-items: center;
+    }
+}

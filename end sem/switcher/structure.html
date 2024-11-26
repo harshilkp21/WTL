@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Blog</title>
+    <style>
+        /* Define CSS variables for light and dark themes */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --header-bg: #f4f4f4;
+    --sidebar-bg: #e4e4e4;
+    --accent-color: #6200ee;
+}
+
+body.dark {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --header-bg: #1e1e1e;
+    --sidebar-bg: #272727;
+    --accent-color: #bb86fc;
+}
+
+/* Global styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header-bg);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: none;
+}
+
+.switch {
+    width: 50px;
+    height: 25px;
+    background: var(--sidebar-bg);
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.switch::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    transition: transform 0.3s;
+}
+
+.theme-switch:checked + .switch::after {
+    transform: translateX(25px);
+}
+
+/* Content layout */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.sidebar {
+    flex: 1;
+    min-width: 200px;
+    background-color: var(--sidebar-bg);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.main-content {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.blog-post {
+    background: var(--header-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>My Dynamic Blog</h1>
+        <div class="theme-toggle">
+            <input type="checkbox" id="theme-switch" class="theme-switch">
+            <label for="theme-switch" class="switch"></label>
+        </div>
+    </header>
+
+    <div class="content">
+        <aside class="sidebar">
+            <h2>Categories</h2>
+            <ul>
+                <li>Technology</li>
+                <li>Life</li>
+                <li>Travel</li>
+                <li>Food</li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <article class="blog-post">
+                <h2>Post 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
+            <article class="blog-post">
+                <h2>Post 2</h2>
+                <p>Praesent ut ligula non mi varius sagittis.</p>
+            </article>
+            <article class="blog-post">
+                <h2>Post 3</h2>
+                <p>Phasellus blandit leo ut odio. Donec posuere vulputate arcu.</p>
+            </article>
+        </main>
+    </div>
+    <script>
+        document.getElementById('theme-switch').addEventListener('change', function () {
+            document.body.classList.toggle('dark', this.checked);
+        });
+    </script>
+</body>
+</html>
